@@ -3,22 +3,26 @@ import java.util.Scanner;
 public class index {
     public static void main(String[] args) {
         Scanner prompt = new Scanner(System.in);
-        final Integer senhaCorreta = 12345 , quantidadeMaxima=3;
-        Integer senhaDigitada = 0, quantidadeTentativa=0;
+        Integer maiorValor = 0, maiorPosicao = 0;
+        final Integer quantidade = 5;
+        Integer numeros[] = new Integer[quantidade];
 
-        do {
-            System.out.println("Informe a senha");
-            senhaDigitada = prompt.nextInt();
-            if (!senhaDigitada.equals(senhaCorreta)){
-                System.out.println("Senha Errada");
-                quantidadeTentativa++;
+        for(int i = 0; i < quantidade; i++){
+            System.out.println("informa o "+(i+1)+"° numero do arraia de são joão");
+            numeros[i] = prompt.nextInt();
+
+            if(numeros[i] == 0){
+                maiorValor = numeros[i];
+                maiorPosicao = i+1;
+            }else if(numeros[i] > maiorValor){
+                maiorValor = numeros[i];
+                maiorPosicao = i+1;
             }
-        }while(!senhaDigitada.equals(senhaCorreta) && quantidadeTentativa < quantidadeMaxima);
-
-        if(quantidadeTentativa.equals(quantidadeMaxima)){
-            System.out.println("BANIDO");
-        }else{
-            System.out.println("Senha Correta");
         }
+        System.out.println("valores recebidos:");
+        for(int i = 0 ; i < quantidade ;i++){
+            System.out.println((i+1)+"° posição = "+numeros[i]);
+        }
+        System.out.println("O maior numero é "+maiorValor+" na "+maiorPosicao+"° posição");
     }
 }
